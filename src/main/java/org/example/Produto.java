@@ -1,7 +1,9 @@
+package org.example;
+
 public class Produto {
-    private String nome;
+    private static String nome;
     private double preco;
-    private int codigo;
+    private String codigo;
     private int contador = 1;
 
 
@@ -9,16 +11,16 @@ public class Produto {
         return preco;
     }
 
-    public String getNome() {
+    public static String getNome() {
         return nome;
     }
 
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
 
-    public Produto(String nome, double preco, int codigo) {
+    public Produto(String nome, double preco, String codigo) {
         this.nome = nome;
         this.preco = preco;
         this.codigo = codigo;
