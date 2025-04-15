@@ -1,7 +1,7 @@
 package org.example;
 
 public class Produto {
-    private static String nome;
+    private String nome;
     private double preco;
     private String codigo;
     private int contador = 1;
@@ -11,7 +11,7 @@ public class Produto {
         return preco;
     }
 
-    public static String getNome() {
+    public String getNome() {
         return nome;
     }
 
