@@ -7,10 +7,22 @@ public class EstoqueFiltroOleo implements EstoquePecas{
 
     @Override
     public void adicionarProduto(Produto produto) {
+        boolean encontrado = false;
 
+        for(Produto p : FiltroOleo) {
+            if (p.getCodigo().equals(produto.getCodigo())) {
+                encontrado = true;
+                p.aumentaQuantidade();
+                System.out.println("Quantidade aumentada do produto: " + p.getNome());
+                break;
+            }
+        }
+        if (!encontrado) {
         FiltroOleo.add(produto);
         System.out.println("Produto " + produto.getNome() + " adicionado com sucesso!" );
+     }
     }
+
 
     @Override
     public void removerProduto(Produto produto) {
@@ -28,7 +40,9 @@ public class EstoqueFiltroOleo implements EstoquePecas{
     public void buscarCodigo(String codigo) {
         for (Produto p : FiltroOleo) {
             if (p.getCodigo().equals(codigo)) {
-                System.out.println("Produto encontrado: " + p.getNome());
+                System.out.println("Produto encontrado:\n " + p.getNome() +
+                        "\n Preço: R$" + p.getPreco() +
+                        "\n Quantidade: " + p.getQuantidade());
                 return;
             }
         }
