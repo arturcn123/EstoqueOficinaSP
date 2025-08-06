@@ -1,11 +1,14 @@
 package org.example;
 
 public class Produto {
+    private String marca;
     private String nome;
     private double preco;
     private String codigo;
-    private int contador = 1;
+    private int quantidade;
 
+
+    public String getMarca() { return marca;}
 
     public double getPreco() {
         return preco;
@@ -20,11 +23,23 @@ public class Produto {
     }
 
 
-    public Produto(String nome, double preco, String codigo) {
+    public Produto(String nome, String marca, double preco, String codigo) {
+
         this.nome = nome;
+        this.marca = marca;
         this.preco = preco;
         this.codigo = codigo;
+        this.quantidade = 1;
     } // Metodo para facilitar a criaçao do produto
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void aumentaQuantidade(){
+        this.quantidade++;
+    }
+
 
     @Override
     public String toString() {

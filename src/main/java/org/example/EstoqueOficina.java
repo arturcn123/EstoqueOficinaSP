@@ -1,15 +1,16 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class EstoqueFiltroOleo implements EstoquePecas{
-    private ArrayList <Produto> FiltroOleo = new ArrayList<>();
+public class EstoqueOficina implements EstoquePecas{
+    private List<Produto> produtos = new ArrayList<>();
 
     @Override
     public void adicionarProduto(Produto produto) {
         boolean encontrado = false;
 
-        for(Produto p : FiltroOleo) {
+        for(Produto p : produtos) {
             if (p.getCodigo().equals(produto.getCodigo())) {
                 encontrado = true;
                 p.aumentaQuantidade();
@@ -18,7 +19,7 @@ public class EstoqueFiltroOleo implements EstoquePecas{
             }
         }
         if (!encontrado) {
-        FiltroOleo.add(produto);
+        produtos.add(produto);
         System.out.println("Produto " + produto.getNome() + " adicionado com sucesso!" );
      }
     }
@@ -26,19 +27,19 @@ public class EstoqueFiltroOleo implements EstoquePecas{
 
     @Override
     public void removerProduto(Produto produto) {
-        FiltroOleo.remove(produto);
+        produtos.remove(produto);
         System.out.println("Produto " + produto.getNome() + " removido com sucesso!");
     }
 
     @Override
     public void listaEstoque() {
-        for (Produto p : FiltroOleo)
+        for (Produto p : produtos)
             System.out.println("Nome: " + p.getNome() + " Codigo: " + p.getCodigo() + " Preço: " + p.getPreco());
         System.out.println();
     }
     @Override
     public void buscarCodigo(String codigo) {
-        for (Produto p : FiltroOleo) {
+        for (Produto p : produtos) {
             if (p.getCodigo().equals(codigo)) {
                 System.out.println("Produto encontrado:\n " + p.getNome() +
                         "\n Preço: R$" + p.getPreco() +
