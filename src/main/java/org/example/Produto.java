@@ -1,34 +1,57 @@
 package org.example;
 
-public class Produto {
-    private String marca;
-    private String nome;
-    private double preco;
-    private String codigo;
-    private int quantidade;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+@Entity
+public class Produto {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String descricao;
+    private String marca;
+    private String categoria;
+    private String codigoPeca;
+    private int quantidade;
+    private BigDecimal valorCusto;
+    private BigDecimal valorVenda;
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public BigDecimal getValorVenda() {
+        return valorVenda;
+    }
+
+    public Long getId() { return id;}
 
     public String getMarca() { return marca;}
 
-    public double getPreco() {
-        return preco;
+    public BigDecimal getValorCusto() {
+        return valorCusto;
     }
 
-    public String getNome() {
-        return nome;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public String getCodigoPeca() {
+        return codigoPeca;
     }
 
+    public Produto () {}
 
-    public Produto(String nome, String marca, double preco, String codigo) {
+    public Produto(String descricao, String marca, BigDecimal valorCusto, String codigo) {
 
-        this.nome = nome;
+        this.descricao = descricao;
         this.marca = marca;
-        this.preco = preco;
-        this.codigo = codigo;
+        this.valorCusto = valorCusto;
+        this.codigoPeca = codigo;
         this.quantidade = 1;
     } // Metodo para facilitar a criaçao do produto
 
@@ -39,11 +62,13 @@ public class Produto {
     public void aumentaQuantidade(){
         this.quantidade++;
     }
-
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
 
     @Override
     public String toString() {
-        return "Produto: " + nome + ", Preço: R$" + preco + ", Código do produto: " + codigo;
+        return "Produto: " + descricao + ", Preço: R$" + valorCusto + ", Código do produto: " + codigoPeca;
     } // Sobreescreveu o ToString para facilitar a vizualizaçao na impressao
 
 }
